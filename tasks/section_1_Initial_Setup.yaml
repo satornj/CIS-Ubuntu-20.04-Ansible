@@ -320,28 +320,28 @@
 # 1.1.14 Ensure /var/tmp partition includes the noexec option
 # The /var/tmp directory is a world-writable directory used for temporary storage by all
 # users and some applications.
-- name: "1.1.12 Ensure nodev option set on /var/tmp partition\n
-         1.1.13 Ensure nosuid option set on /var/tmp partition\n
-         1.1.14 Ensure noexec option set on /var/tmp partition"
-  block:
-    - name: 1.1.12 Ensure nodev option set on /var/tmp partitions
-      shell: |
-        mount | grep "on /var/tmp" && true || true
-      register: vartemp
-    - name: /var/tmp partitions
-      debug:
-        msg: "{{ vartemp.stdout_lines }}"
-  tags:
-    - section1
-    - level_2_server
-    - level_2_workstation
-    - 1.1.11
-    - 1.1.12
-    - 1.1.13
-    - 1.1.14
-    - mount
-    - tmp
-    - manual
+#- name: "1.1.12 Ensure nodev option set on /var/tmp partition\n
+#         1.1.13 Ensure nosuid option set on /var/tmp partition\n
+#         1.1.14 Ensure noexec option set on /var/tmp partition"
+#  block:
+#    - name: 1.1.12 Ensure nodev option set on /var/tmp partitions
+#      shell: |
+#        mount | grep "on /var/tmp" && true || true
+#      register: vartemp
+#    - name: /var/tmp partitions
+#      debug:
+#        msg: "{{ vartemp.stdout_lines }}"
+#  tags:
+#    - section1
+#    - level_2_server
+#    - level_2_workstation
+#    - 1.1.11
+#    - 1.1.12
+#    - 1.1.13
+#    - 1.1.14
+#    - mount
+#    - tmp
+#    - manual
 # 1.1.15 Ensure separate partition exists for /var/log
 - name: 1.1.15 Ensure separate partition exists for /var/log
   debug:

@@ -12,7 +12,7 @@ disable_fat: yes
 temp_dir_size: 1G
 disable_squashfs: no #Disabling squashfs will prevent the use of snap
 ## 1.5.1 Ensure bootloader password is set (using grub): default is no
-set_bootloader_credentials: no
+set_bootloader_credentials: yes
 ### Update the default bootloader user and password
 bootloader_credentials: { user: "root", password: "BAAC@osd2559" }
 # 1.5.3 Ensure authentication required for single user mode
@@ -24,16 +24,14 @@ custom_motd_file_path: "{{ inventory_dir }}/custom_templates/motd_custom.txt"
 
 # Section 2 Settings
 ##Setting for systemd-timesyncd
-enable_systemdtimesyncd: no #If you enable this make sure to disable NTP below, only one time service must be run in the server
+enable_systemdtimesyncd: yes #If you enable this make sure to disable NTP below, only one time service must be run in the server
 timesync_timezone: Etc/UTC
 timesync_fallback_ntp_hosts:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
+  - 192.168.99.1
+  - 192.168.99.2
 
 ## Settings for NTP
-enableNTP: yes
+enableNTP: no
 time_synchronization_package_name: ntp
 time_synchronization_servers:
   - uri: "time1.google.com"
@@ -50,10 +48,8 @@ chronyEnable: no
 chrony_driftfile: /var/lib/chrony/chrony.drift
 chronyservers_preferred: []
 chronyservers:
-  - 0.pool.ntp.org
-  - 1.pool.ntp.org
-  - 2.pool.ntp.org
-  - 3.pool.ntp.org
+  - 192.168.99.1
+  - 192.168.99.2
 chrony_keys: /etc/chrony/chrony.keys
 chrony_log_dir: /var/log/chrony
 
